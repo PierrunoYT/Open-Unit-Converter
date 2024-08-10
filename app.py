@@ -16,10 +16,18 @@ def index():
             'in': 0.0254, 'ft': 0.3048, 'yd': 0.9144, 'mi': 1609.344
         }
         
+        weight_units = {
+            'mg': 0.001, 'g': 1, 'kg': 1000, 't': 1000000
+        }
+        
         if from_unit in length_units and to_unit in length_units:
             # Convert to meters first, then to the target unit
             meters = value * length_units[from_unit]
             result = meters / length_units[to_unit]
+        elif from_unit in weight_units and to_unit in weight_units:
+            # Convert to grams first, then to the target unit
+            grams = value * weight_units[from_unit]
+            result = grams / weight_units[to_unit]
         # Temperature conversions
         elif from_unit == 'celsius' and to_unit == 'fahrenheit':
             result = (value * 9/5) + 32
