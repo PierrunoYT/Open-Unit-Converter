@@ -18,6 +18,14 @@ def index():
             result = (value * 9/5) + 32
         elif from_unit == 'fahrenheit' and to_unit == 'celsius':
             result = (value - 32) * 5/9
+        elif from_unit == 'celsius' and to_unit == 'kelvin':
+            result = value + 273.15
+        elif from_unit == 'kelvin' and to_unit == 'celsius':
+            result = value - 273.15
+        elif from_unit == 'fahrenheit' and to_unit == 'kelvin':
+            result = (value - 32) * 5/9 + 273.15
+        elif from_unit == 'kelvin' and to_unit == 'fahrenheit':
+            result = (value - 273.15) * 9/5 + 32
     
     return render_template('index.html', result=result)
 
