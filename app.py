@@ -75,6 +75,11 @@ def index():
             'J': 1, 'cal': 4.184, 'kWh': 3.6e6, 'BTU': 1055.06
         }
         
+        area_units = {
+            'm²': 1, 'km²': 1e6, 'ft²': 0.092903, 'mi²': 2.59e6,
+            'acre': 4046.86, 'hectare': 10000
+        }
+        
         if from_unit in length_units and to_unit in length_units:
             # Convert to meters first, then to the target unit
             meters = value * length_units[from_unit]
@@ -114,6 +119,10 @@ def index():
             # Convert to Joules first, then to the target unit
             joules = value * energy_units[from_unit]
             result = joules / energy_units[to_unit]
+        elif from_unit in area_units and to_unit in area_units:
+            # Convert to square meters first, then to the target unit
+            square_meters = value * area_units[from_unit]
+            result = square_meters / area_units[to_unit]
         # Temperature conversions
         def celsius_to_kelvin(c):
             return c + 273.15
