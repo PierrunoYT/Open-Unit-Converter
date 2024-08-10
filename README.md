@@ -31,11 +31,30 @@ A comprehensive web application for converting between various units of measurem
 ## How to Run
 
 1. Ensure you have Python installed on your system
-2. Install Flask by running `pip install flask`
-3. Clone this repository
-4. Navigate to the project directory
-5. Run `python app.py`
-6. Open a web browser and go to `http://localhost:5000`
+2. Clone this repository
+3. Navigate to the project directory
+4. Create a virtual environment:
+   ```
+   python -m venv venv
+   ```
+5. Activate the virtual environment:
+   - On Windows:
+     ```
+     venv\Scripts\activate
+     ```
+   - On macOS and Linux:
+     ```
+     source venv/bin/activate
+     ```
+6. Install Flask by running:
+   ```
+   pip install flask
+   ```
+7. Run the application:
+   ```
+   python app.py
+   ```
+8. Open a web browser and go to `http://localhost:5000`
 
 ## Recent Improvements
 
