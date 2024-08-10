@@ -10,19 +10,35 @@
     <form method="POST">
         <input type="number" name="value" step="any" required>
         <select name="from_unit">
-            <option value="meters">Meters</option>
-            <option value="feet">Feet</option>
-            <option value="celsius">Celsius</option>
-            <option value="fahrenheit">Fahrenheit</option>
-            <option value="kelvin">Kelvin</option>
+            <optgroup label="Length">
+                <option value="meters">Meters</option>
+                <option value="kilometers">Kilometers</option>
+                <option value="feet">Feet</option>
+                <option value="inches">Inches</option>
+                <option value="yards">Yards</option>
+                <option value="miles">Miles</option>
+            </optgroup>
+            <optgroup label="Temperature">
+                <option value="celsius">Celsius</option>
+                <option value="fahrenheit">Fahrenheit</option>
+                <option value="kelvin">Kelvin</option>
+            </optgroup>
         </select>
         <span>to</span>
         <select name="to_unit">
-            <option value="feet">Feet</option>
-            <option value="meters">Meters</option>
-            <option value="fahrenheit">Fahrenheit</option>
-            <option value="celsius">Celsius</option>
-            <option value="kelvin">Kelvin</option>
+            <optgroup label="Length">
+                <option value="meters">Meters</option>
+                <option value="kilometers">Kilometers</option>
+                <option value="feet">Feet</option>
+                <option value="inches">Inches</option>
+                <option value="yards">Yards</option>
+                <option value="miles">Miles</option>
+            </optgroup>
+            <optgroup label="Temperature">
+                <option value="celsius">Celsius</option>
+                <option value="fahrenheit">Fahrenheit</option>
+                <option value="kelvin">Kelvin</option>
+            </optgroup>
         </select>
         <button type="submit">Convert</button>
     </form>
