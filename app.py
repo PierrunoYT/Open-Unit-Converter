@@ -13,7 +13,11 @@ def index():
         # Length conversions
         length_units = {
             'mm': 0.001, 'cm': 0.01, 'm': 1, 'km': 1000,
-            'in': 0.0254, 'ft': 0.3048, 'yd': 0.9144, 'mi': 1609.344
+            'in': 0.0254, 'ft': 0.3048, 'yd': 0.9144, 'mi': 1609.344,
+            'nmi': 1852, 'fathom': 1.8288,
+            'μm': 1e-6, 'nm': 1e-9, 'Å': 1e-10,
+            'ly': 9.461e15, 'pc': 3.086e16, 'AU': 1.496e11,
+            'league': 4828.032, 'furlong': 201.168, 'rod': 5.0292, 'chain': 20.1168, 'link': 0.201168
         }
         
         weight_units = {
