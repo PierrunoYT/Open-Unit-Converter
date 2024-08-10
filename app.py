@@ -17,7 +17,9 @@ def index():
         }
         
         weight_units = {
-            'mg': 0.001, 'g': 1, 'kg': 1000, 't': 1000000
+            'mg': 0.001, 'g': 1, 'kg': 1000, 't': 1000000,
+            'oz': 28.34952, 'lb': 453.59237, 'st': 6350.29318,
+            'ton_us': 907184.74, 'ton_uk': 1016046.9088
         }
         
         if from_unit in length_units and to_unit in length_units:
