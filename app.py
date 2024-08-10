@@ -45,6 +45,11 @@ def index():
             'shot': 0.0443603, 'fifth': 0.757082
         }
         
+        time_units = {
+            'second': 1, 'minute': 60, 'hour': 3600, 'day': 86400,
+            'week': 604800, 'month': 2629746, 'year': 31556952
+        }
+        
         if from_unit in length_units and to_unit in length_units:
             # Convert to meters first, then to the target unit
             meters = value * length_units[from_unit]
@@ -57,6 +62,10 @@ def index():
             # Convert to liters first, then to the target unit
             liters = value * volume_units[from_unit]
             result = liters / volume_units[to_unit]
+        elif from_unit in time_units and to_unit in time_units:
+            # Convert to seconds first, then to the target unit
+            seconds = value * time_units[from_unit]
+            result = seconds / time_units[to_unit]
         # Temperature conversions
         def celsius_to_kelvin(c):
             return c + 273.15
