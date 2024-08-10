@@ -31,18 +31,37 @@ def index():
             grams = value * weight_units[from_unit]
             result = grams / weight_units[to_unit]
         # Temperature conversions
-        elif from_unit == 'celsius' and to_unit == 'fahrenheit':
-            result = (value * 9/5) + 32
-        elif from_unit == 'fahrenheit' and to_unit == 'celsius':
-            result = (value - 32) * 5/9
-        elif from_unit == 'celsius' and to_unit == 'kelvin':
-            result = value + 273.15
-        elif from_unit == 'kelvin' and to_unit == 'celsius':
-            result = value - 273.15
-        elif from_unit == 'fahrenheit' and to_unit == 'kelvin':
-            result = (value - 32) * 5/9 + 273.15
-        elif from_unit == 'kelvin' and to_unit == 'fahrenheit':
-            result = (value - 273.15) * 9/5 + 32
+        def celsius_to_kelvin(c):
+            return c + 273.15
+
+        def kelvin_to_celsius(k):
+            return k - 273.15
+
+        temp_conversions = {
+            'celsius': lambda x: x,
+            'fahrenheit': lambda x: (x - 32) * 5/9,
+            'kelvin': kelvin_to_celsius,
+            'rankine': lambda x: (x - 491.67) * 5/9,
+            'reaumur': lambda x: x * 5/4,
+            'romer': lambda x: (x - 7.5) * 40/21,
+            'delisle': lambda x: (100 - x) * 2/3,
+            'newton': lambda x: x * 100/33,
+        }
+
+        inverse_temp_conversions = {
+            'celsius': lambda x: x,
+            'fahrenheit': lambda x: x * 9/5 + 32,
+            'kelvin': celsius_to_kelvin,
+            'rankine': lambda x: x * 9/5 + 491.67,
+            'reaumur': lambda x: x * 4/5,
+            'romer': lambda x: x * 21/40 + 7.5,
+            'delisle': lambda x: 100 - x * 3/2,
+            'newton': lambda x: x * 33/100,
+        }
+
+        if from_unit in temp_conversions and to_unit in inverse_temp_conversions:
+            celsius = temp_conversions[from_unit](value)
+            result = inverse_temp_conversions[to_unit](celsius)
     
     return render_template('index.html', result=result)
 
