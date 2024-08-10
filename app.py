@@ -54,6 +54,11 @@ def index():
             'm/s': 1, 'km/h': 1/3.6, 'mph': 0.44704, 'knot': 0.514444
         }
         
+        digital_units = {
+            'bit': 1, 'byte': 8, 'KB': 8*1024, 'MB': 8*1024*1024,
+            'GB': 8*1024*1024*1024, 'TB': 8*1024*1024*1024*1024
+        }
+        
         if from_unit in length_units and to_unit in length_units:
             # Convert to meters first, then to the target unit
             meters = value * length_units[from_unit]
@@ -74,6 +79,10 @@ def index():
             # Convert to m/s first, then to the target unit
             ms = value * speed_units[from_unit]
             result = ms / speed_units[to_unit]
+        elif from_unit in digital_units and to_unit in digital_units:
+            # Convert to bits first, then to the target unit
+            bits = value * digital_units[from_unit]
+            result = bits / digital_units[to_unit]
         # Temperature conversions
         def celsius_to_kelvin(c):
             return c + 273.15
