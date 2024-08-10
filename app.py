@@ -63,6 +63,10 @@ def index():
             'Hz': 1
         }
         
+        electric_units = {
+            'A': 1, 'V': 1, 'Ω': 1, 'C': 1, 'F': 1
+        }
+        
         if from_unit in length_units and to_unit in length_units:
             # Convert to meters first, then to the target unit
             meters = value * length_units[from_unit]
@@ -91,6 +95,9 @@ def index():
             # Convert to Hz first, then to the target unit
             hz = value * frequency_units[from_unit]
             result = hz / frequency_units[to_unit]
+        elif from_unit in electric_units and to_unit in electric_units:
+            # For electric units, we're assuming direct conversion as they are base units
+            result = value
         # Temperature conversions
         def celsius_to_kelvin(c):
             return c + 273.15
