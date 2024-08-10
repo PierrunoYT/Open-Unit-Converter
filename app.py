@@ -33,6 +33,18 @@ def index():
             'drachm': 3.8879346
         }
         
+        volume_units = {
+            'mL': 0.001, 'cL': 0.01, 'dL': 0.1, 'L': 1, 'cm³': 0.001, 'm³': 1000,
+            'fl_oz': 0.0295735, 'cup': 0.236588, 'pt': 0.473176, 'qt': 0.946353, 'gal': 3.78541,
+            'in³': 0.0163871, 'ft³': 28.3168, 'yd³': 764.555,
+            'tsp': 0.00492892, 'tbsp': 0.0147868,
+            'μL': 1e-6, 'nL': 1e-9,
+            'bbl': 158.987,
+            'TEU': 33200,  # Approximate volume of a 20-foot shipping container
+            'bushel': 35.2391, 'peck': 8.80977, 'gill': 0.118294, 'hogshead': 238.481,
+            'shot': 0.0443603, 'fifth': 0.757082
+        }
+        
         if from_unit in length_units and to_unit in length_units:
             # Convert to meters first, then to the target unit
             meters = value * length_units[from_unit]
@@ -41,6 +53,10 @@ def index():
             # Convert to grams first, then to the target unit
             grams = value * weight_units[from_unit]
             result = grams / weight_units[to_unit]
+        elif from_unit in volume_units and to_unit in volume_units:
+            # Convert to liters first, then to the target unit
+            liters = value * volume_units[from_unit]
+            result = liters / volume_units[to_unit]
         # Temperature conversions
         def celsius_to_kelvin(c):
             return c + 273.15
