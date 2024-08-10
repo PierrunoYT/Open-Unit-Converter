@@ -67,6 +67,10 @@ def index():
             'A': 1, 'V': 1, 'Ω': 1, 'C': 1, 'F': 1
         }
         
+        power_units = {
+            'W': 1, 'hp': 745.7
+        }
+        
         if from_unit in length_units and to_unit in length_units:
             # Convert to meters first, then to the target unit
             meters = value * length_units[from_unit]
@@ -98,6 +102,10 @@ def index():
         elif from_unit in electric_units and to_unit in electric_units:
             # For electric units, we're assuming direct conversion as they are base units
             result = value
+        elif from_unit in power_units and to_unit in power_units:
+            # Convert to Watts first, then to the target unit
+            watts = value * power_units[from_unit]
+            result = watts / power_units[to_unit]
         # Temperature conversions
         def celsius_to_kelvin(c):
             return c + 273.15
