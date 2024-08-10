@@ -59,6 +59,10 @@ def index():
             'GB': 8*1024*1024*1024, 'TB': 8*1024*1024*1024*1024
         }
         
+        frequency_units = {
+            'Hz': 1
+        }
+        
         if from_unit in length_units and to_unit in length_units:
             # Convert to meters first, then to the target unit
             meters = value * length_units[from_unit]
@@ -83,6 +87,10 @@ def index():
             # Convert to bits first, then to the target unit
             bits = value * digital_units[from_unit]
             result = bits / digital_units[to_unit]
+        elif from_unit in frequency_units and to_unit in frequency_units:
+            # Convert to Hz first, then to the target unit
+            hz = value * frequency_units[from_unit]
+            result = hz / frequency_units[to_unit]
         # Temperature conversions
         def celsius_to_kelvin(c):
             return c + 273.15
