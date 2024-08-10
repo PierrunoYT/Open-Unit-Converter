@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter</title>
+</head>
+<body>
+    <h1>Unit Converter</h1>
+    <form method="POST">
+        <input type="number" name="value" step="any" required>
+        <select name="from_unit">
+            <option value="meters">Meters</option>
+            <option value="feet">Feet</option>
+        </select>
+        <span>to</span>
+        <select name="to_unit">
+            <option value="feet">Feet</option>
+            <option value="meters">Meters</option>
+        </select>
+        <button type="submit">Convert</button>
+    </form>
+    {% if result is not none %}
+    <p>Result: {{ result }}</p>
+    {% endif %}
+</body>
+</html>
