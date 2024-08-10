@@ -50,6 +50,10 @@ def index():
             'week': 604800, 'month': 2629746, 'year': 31556952
         }
         
+        speed_units = {
+            'm/s': 1, 'km/h': 1/3.6, 'mph': 0.44704, 'knot': 0.514444
+        }
+        
         if from_unit in length_units and to_unit in length_units:
             # Convert to meters first, then to the target unit
             meters = value * length_units[from_unit]
@@ -66,6 +70,10 @@ def index():
             # Convert to seconds first, then to the target unit
             seconds = value * time_units[from_unit]
             result = seconds / time_units[to_unit]
+        elif from_unit in speed_units and to_unit in speed_units:
+            # Convert to m/s first, then to the target unit
+            ms = value * speed_units[from_unit]
+            result = ms / speed_units[to_unit]
         # Temperature conversions
         def celsius_to_kelvin(c):
             return c + 273.15
