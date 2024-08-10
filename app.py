@@ -14,6 +14,10 @@ def index():
             result = value * 3.28084
         elif from_unit == 'feet' and to_unit == 'meters':
             result = value / 3.28084
+        elif from_unit == 'celsius' and to_unit == 'fahrenheit':
+            result = (value * 9/5) + 32
+        elif from_unit == 'fahrenheit' and to_unit == 'celsius':
+            result = (value - 32) * 5/9
     
     return render_template('index.html', result=result)
 
